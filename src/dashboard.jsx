@@ -6,6 +6,7 @@ export const Dashboard = () => {
   const history = useHistory();
   const [users, setUsers] = useState([])
   useEffect(() => {
+    //  setting up abortive for clean up
     const abortCont = new AbortController();
     setTimeout(()=>{
 
@@ -14,6 +15,9 @@ export const Dashboard = () => {
       .then((result)=> setUsers(result))
       
     },3000)
+
+
+    //  return abortive controller for the clean up of the component
     return ()=> abortCont.abort
     
     }, [])
